@@ -1,0 +1,27 @@
+<h2>{{ session.name }}</h2>
+<div>{{ session.track }}</div>
+<div>{{ session.date | date : "dd/MM/yyyy" }}</div>
+<div>Lyon</div>
+<h1>Nombre de participant {{ session.participants }}</h1>
+<div class="tools">
+  <a class="delete"> Details </a>
+
+  <a
+    [appInscriptionDD]="isCompleted"
+    class="inscrire"
+    (click)="ajouter(session)"
+  >
+    Inscription
+  </a>
+
+  <a class="partager"> Partager </a>
+  <a class="delete" (click)="onDelete()"> Suppression </a>
+  <br />
+  <a
+    [routerLink]="['../edit', session.id]"
+    routerLinkActive="active"
+    class="inscrire"
+  >
+    Modification</a
+  >
+</div>

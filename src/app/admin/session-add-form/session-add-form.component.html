@@ -1,0 +1,134 @@
+<header>
+  <h2>Ajouter une session de formation</h2>
+</header>
+
+<form [formGroup]="sessionForm" (ngSubmit)="onSubmit()">
+  <div class="row g-3">
+    <div class="col-md-6">
+      <label for="name" class="form-label">Domaine de formation</label>
+      <select id="name" formControlName="name" class="form-select" required>
+        <option value="web">Web</option>
+        <option value="mobile">Mobile</option>
+      </select>
+      <div
+        *ngIf="
+          sessionForm.get('name')!.invalid &&
+          (sessionForm.get('name')!.dirty || sessionForm.get('name')!.touched)
+        "
+      >
+        <div class="alert alert-danger" role="alert">
+          Le domaine de formation est obligatoire.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="track" class="form-label">Parcours</label>
+      <input
+        type="text"
+        class="form-control"
+        id="track"
+        formControlName="track"
+        required
+      />
+      <div
+        *ngIf="
+          sessionForm.get('track')!.invalid &&
+          (sessionForm.get('track')!.dirty || sessionForm.get('track')!.touched)
+        "
+      >
+        <div class="alert alert-danger" role="alert">
+          Le parcours est obligatoire.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="date" class="form-label">Date</label>
+      <input
+        type="date"
+        class="form-control"
+        id="date"
+        formControlName="date"
+        required
+      />
+      <div
+        *ngIf="
+          sessionForm.get('date')!.invalid &&
+          (sessionForm.get('date')!.dirty || sessionForm.get('date')!.touched)
+        "
+      >
+        <div class="alert alert-danger" role="alert">
+          La date est obligatoire.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="duree" class="form-label">Durée (heures)</label>
+      <input
+        type="number"
+        class="form-control"
+        id="duree"
+        formControlName="duree"
+        min="1"
+        required
+      />
+      <div
+        *ngIf="
+          sessionForm.get('duree')!.invalid &&
+          (sessionForm.get('duree')!.dirty || sessionForm.get('duree')!.touched)
+        "
+      >
+        <div class="alert alert-danger" role="alert">
+          La durée doit être d'au moins 1 heure.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="local" class="form-label">Lieu</label>
+      <input
+        type="text"
+        class="form-control"
+        id="local"
+        formControlName="local"
+        required
+      />
+      <div
+        *ngIf="
+          sessionForm.get('local')!.invalid &&
+          (sessionForm.get('local')!.dirty || sessionForm.get('local')!.touched)
+        "
+      >
+        <div class="alert alert-danger" role="alert">
+          Le lieu est obligatoire.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="participants" class="form-label"
+        >Nombre de participants</label
+      >
+      <input
+        type="number"
+        class="form-control"
+        id="participants"
+        formControlName="participants"
+        value="18"
+        readonly
+      />
+    </div>
+
+    <div class="col-12">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="sessionForm.invalid"
+      >
+        Créer la session
+      </button>
+    </div>
+  </div>
+</form>

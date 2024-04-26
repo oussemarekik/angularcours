@@ -1,0 +1,21 @@
+<section>
+  @for(session of sessionItems;track session.id){
+
+  <app-session-item
+    [session]="session"
+    (onSelect)="inscrire($event)"
+    [ngClass]="{
+      'web-class': session.name === 'Web',
+      'mobile-class': session.name === 'Mobile'
+    }"
+  />
+  }
+</section>
+<section>
+  <h1>Nomnbre totale est {{ totInscrir }}</h1>
+</section>
+<footer>
+  <a routerLink="/admin" routerLinkActive="active">
+    <img src="assets/admin3.png" class="icon" />
+  </a>
+</footer>

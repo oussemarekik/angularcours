@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { SessionItemComponent } from './session-item/session-item.component';
-import {SessionItemListComponent} from "./session-item-list/session-item-list.component";
+import { SessionItemComponent } from './admin/session-item/session-item.component';
+import { SessionItemListComponent } from './admin/session-item-list/session-item-list.component';
+import { RouterOutlet,RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, SessionItemComponent, SessionItemListComponent],
+  imports: [CommonModule, RouterOutlet, SessionItemComponent, SessionItemListComponent,RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

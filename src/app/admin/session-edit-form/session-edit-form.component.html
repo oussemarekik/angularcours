@@ -1,0 +1,76 @@
+<!-- session-edit-form.component.html -->
+
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name" class="form-control" />
+    <div
+      *ngIf="editForm.get('name')!.invalid && editForm.get('name')!.touched"
+      class="text-danger"
+    >
+      Name is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="track">Track:</label>
+    <select id="track" formControlName="track" class="form-control">
+      <option *ngFor="let track of tracks" [value]="track">{{ track }}</option>
+    </select>
+    <div
+      *ngIf="editForm.get('track')!.invalid && editForm.get('track')!.touched"
+      class="text-danger"
+    >
+      Track is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="date">Date:</label>
+    <input type="date" id="date" formControlName="date" class="form-control" />
+    <div
+      *ngIf="editForm.get('date')!.invalid && editForm.get('date')!.touched"
+      class="text-danger"
+    >
+      Date is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="duree">Duration (minutes):</label>
+    <input
+      type="number"
+      id="duree"
+      formControlName="duree"
+      class="form-control"
+    />
+    <div
+      *ngIf="editForm.get('duree')!.invalid && editForm.get('duree')!.touched"
+      class="text-danger"
+    >
+      Duration must be at least 1 minute
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="location">Location:</label>
+    <input
+      type="text"
+      id="location"
+      formControlName="location"
+      class="form-control"
+    />
+    <div
+      *ngIf="
+        editForm.get('location')!.invalid && editForm.get('location')!.touched
+      "
+      class="text-danger"
+    >
+      Location is required
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="editForm.invalid" class="btn btn-primary">
+    Submit
+  </button>
+</form>
